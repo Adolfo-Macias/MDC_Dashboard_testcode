@@ -15,7 +15,7 @@ test('test', async () => {
  // Abre una nueva página en el contexto cargado
   const page = await context.newPage();
  
-  await page.goto('https://lively-sky-0d0a5c510.3.azurestaticapps.net/clients');
+  await page.goto('https://pmo-dashboard-itg.azurewebsites.net/dashboards/projects');
   await page.getByText('Please Log In').click()
   await utils.waitForSeconds(page, 10);
   await page.click('span:has-text("Clients")');

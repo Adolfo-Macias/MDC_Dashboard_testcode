@@ -5,7 +5,7 @@ const authFile = '.auth/user.json';
 setup('authenticate', async ({ page, context}) => {
   // Perform authentication steps. Replace these actions with your own.
   const popupPromise = page.waitForEvent('popup');
-  await page.goto('https://lively-sky-0d0a5c510.3.azurestaticapps.net/clients');
+  await page.goto('https://pmo-dashboard-itg.azurewebsites.net/dashboards/projects');
   await page.getByText('Please Log In').click()
   const popup = await popupPromise;
   await popup.waitForLoadState();
