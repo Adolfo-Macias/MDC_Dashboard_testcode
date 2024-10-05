@@ -12,8 +12,9 @@ export class ClientPage {
     constructor(public page:Page){}
 
     public async selectProjectStatusFilter(status:string){
-        await this.page.selectOption(dropDownProject, status)
-        await this.page.waitForTimeout(5000)
+        await this.page.selectOption(dropDownProject, status, {timeout: 10000});
+        await this.page.waitForTimeout(3000)
+
     }
 
     public async validateSearchElements(){

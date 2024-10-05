@@ -42,6 +42,7 @@ test.describe('Basic elements for Manager user in Client view', async () =>{
         const headerPage = new HeaderPage(mypage)
         const clientPage = new ClientPage(mypage)
         await headerPage.clickOnClientView()
+        await mypage.waitForTimeout(2000)
         await clientPage.selectProjectStatusFilter('Archive')
         await clientPage.validateProyectDetails("Visible", data.client.projects.ArchiveProject)
     });
