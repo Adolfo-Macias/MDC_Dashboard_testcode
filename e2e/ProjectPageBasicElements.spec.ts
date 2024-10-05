@@ -24,7 +24,7 @@ test.describe('Basic elements for Manager user in Project view', async () =>{
         await projectPage.validateProyectName("not Visble", data.client.projects.project3.Name);
     });
 
-    test.only('Visit Metrics', async () => {
+    test('Visit Metrics', async () => {
         const headerPage = new HeaderPage(mypage)
         const projectPage = new ProjectPage(mypage)
         const metricsPage = new MetricsPage(mypage)
