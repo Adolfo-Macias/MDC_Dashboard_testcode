@@ -1,7 +1,5 @@
 import { test } from '@playwright/test';
 import { chromium } from 'playwright';
-import { utils } from '../Pages/common.ts'
-
 
 test('test', async () => {
   
@@ -15,12 +13,13 @@ test('test', async () => {
  // Abre una nueva página en el contexto cargado
   const page = await context.newPage();
  
-  await page.goto('https://pmo-dashboard-itg.azurewebsites.net/dashboards/projects');
+  await page.goto('https://pmo-dashboard-itg.azurewebsites.net/dashboards/projects',{timeout:60000});
+  await page.waitForTimeout(5000)
   await page.getByText('Please Log In').click()
-  await utils.waitForSeconds(page, 10);
+  
+  // await utils.waitForSeconds(page, 10);
   await page.click('span:has-text("Clients")');
-  await utils.waitForSeconds(page, 10);
-
+  // await page.waitForTimeout(10000)
 
 });
 

@@ -1,0 +1,35 @@
+{
+    "client": {
+        "TestAutomationClientName":"Test Automation Client Name", 
+        "projects":{
+            "project1": {
+                "Name":"Test Automation Project Name 1",
+                "ProjectManager": "Test Automation Project Manager 1",
+                "EngagementManager":"Test Automation Engagement Manager 1",
+                "AccountExecutive":"Test Automation Account Executive 1",
+                "Action":["Edit", "Archive"]
+            },
+            "project2": {
+                "Name":"Test Automation Project Name 2",
+                "ProjectManager": "Test Automation Project Manager 2",
+                "EngagementManager":"Test Automation Engagement Manager 2",
+                "AccountExecutive":"Test Automation Account Executive 2",
+                "Action":["Edit", "Archive"]
+            },
+            "project3": {
+                "Name":"Test Automation Project Name 3",
+                "ProjectManager": "Test Automation Project Manager 3",
+                "EngagementManager":"Test Automation Engagement Manager 3",
+                "AccountExecutive":"Test Automation Account Executive 3",
+                "Action":["Edit", "Archive"]
+            },
+            "ArchiveProject": {
+                "Name":"Partselerate",
+                "ProjectManager": "Ricardo Villanueva",
+                "EngagementManager":"Jennifer Clarke-Burke",
+                "AccountExecutive":"Chelsea Potter",
+                "Action":["Edit", "Unarchive"]
+            }
+        }
+    }
+}

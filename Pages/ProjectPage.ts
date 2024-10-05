@@ -2,55 +2,19 @@ import { expect, Page } from "@playwright/test";
 const tableHeader = 'thead > tr > th'
 const clientNameRow = 'tr > td > strong'
 const projectNameCell = 'tr > td.cdk-column-name'
-const title = 'h3'
-const searchBar='div > input'
-const searchButton ="button[id='searchIcon']"
-const dropDownProject = 'select[id="clientStatus"]'
 
-export class ClientPage {
+export class ProjectPage {
 
     constructor(public page:Page){}
 
-    public async selectProjectStatusFilter(status:string){
-        await this.page.selectOption(dropDownProject, status)
-        await this.page.waitForTimeout(5000)
-    }
-
-    public async validateSearchElements(){
-        await this.validateSearchBar();
-        await this.validateSearchButton();
-    }
-
-    public async inputSearch(searchText:string){
-        await this.page.locator(searchBar).fill(searchText);
-        await this.clickOnSearchButton();
-    }
-
-    public async clickOnSearchButton(){
-        await this.page.locator(searchButton).click();
-    }
-
-    public async validateSearchButton(){
-        await expect(this.page.locator(searchButton)).toBeVisible();
-    }
-
-    public async validateSearchBar(){
-        await expect(this.page.locator(searchBar)).toBeVisible();
-        await expect(this.page.locator(searchBar)).toHaveAttribute('placeholder',"Search");
-    }
-
-    public async validateTitle(){
-        await expect(this.page.locator(title)).toBeVisible();
-        await expect(this.page.locator(title)).toContainText(/Client/i);
-    }
 
     public async validateTableHeaders(){
-        await expect(this.page.locator(tableHeader)).toContainText(['Project Name', 'Project Manager', 'Engagement Manager', 'Account Executive','Action']);
+        await expect(this.page.locator(tableHeader)).toContainText(['Project Name', 'Project Type', 'Risk Level', 'Project Status','Last Iteration End Date', 'Metrics']);
     }
 
     public async clickOnExpandCollapseClient(clientName:string){
         await expect(this.page.locator(clientNameRow).filter({hasText: clientName})).toBeVisible();
-        await this.page.locator(`//tr /td/strong[contains(text(), '${clientName}')]/..//fa-icon[contains(@class, 'ng-fa-icon') and contains(@class, 'ng-star-inserted')]`).click()
+        await this.page.locator(`//tr/td/strong[contains(text(), '${clientName}')]/../fa-icon`).click()
         await this.page.waitForLoadState('networkidle');
     }
 
@@ -72,6 +36,10 @@ export class ClientPage {
         } else {
             await expect(this.page.locator(projectNameCell).filter({hasText: project})).toBeVisible();
         }
+    }
+
+    public async clickOnMetrics(clickOnMetrics:string){
+        await this.page.locator(`//tr/td/a[contains(text(), '${clickOnMetrics}')]/../../td/fa-icon`).click()
     }
 
 }
