@@ -1,5 +1,5 @@
-import { ClientPage, CommonElements, HeaderPage, test} from "../fixture/loadModules";
-import * as data from "../fixture/clientTestData.json"
+import { ClientPage, CommonElements, HeaderPage, test} from "../../fixture/loadModules";
+import * as data from "../../fixture/clientTestData.json"
 
 let mypage
 test.beforeEach(async ({baseURL}) => {

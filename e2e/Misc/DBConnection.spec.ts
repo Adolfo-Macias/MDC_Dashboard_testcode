@@ -1,7 +1,7 @@
 
 import * as sql from 'mssql'
-import { test} from '../fixture/loadModules';
-import { config } from '../playwright.config';
+import { test} from '../../fixture/loadModules';
+import { config } from '../../playwright.config';
 
 let connection
 

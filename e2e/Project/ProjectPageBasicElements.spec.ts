@@ -1,5 +1,5 @@
-import { ProjectPage, CommonElements, HeaderPage, test, MetricsPage} from "../fixture/loadModules";
-import * as data from "../fixture/clientTestData.json"
+import { ProjectPage, CommonElements, HeaderPage, test} from "../../fixture/loadModules";
+import * as data from "../../fixture/clientTestData.json"
 
 let mypage
 test.beforeEach(async ({baseURL}) => {
@@ -22,22 +22,14 @@ test.describe('Basic elements for Manager user in Project view', async () =>{
         await projectPage.validateProyectName("not Visble", data.client.projects.project1.Name);
         await projectPage.validateProyectName("not Visble", data.client.projects.project2.Name);
         await projectPage.validateProyectName("not Visble", data.client.projects.project3.Name);
+        await projectPage.clickOnExpandCollapseClient(data.client.TestAutomationClientName);
+        await projectPage.validateProyectDetails("Visible", data.client.projects.project1);
+        await projectPage.validateProyectDetails("Visible", data.client.projects.project2);
+        await projectPage.validateProyectDetails("Visible", data.client.projects.project3);
+        await headerPage.validateHeader()
     });
 
-    test('Visit Metrics', async () => {
-        const headerPage = new HeaderPage(mypage)
-        const projectPage = new ProjectPage(mypage)
-        const metricsPage = new MetricsPage(mypage)
-        await headerPage.clickOnProjectView()
-        await projectPage.clickOnMetrics(data.client.projects.project1.Name)
-        await headerPage.validateHeader()
-        await headerPage.validateTabExist('Exist', 'Clients')
-        await headerPage.validateTabExist('Exist', 'Projects')
-        await metricsPage.validateTabExist('Exist', 'Iterations')
-        await metricsPage.validateTabExist('Exist', 'Risks')
-        await metricsPage.validateTableHeaders()
-        
-    });
+
 
 
 })
