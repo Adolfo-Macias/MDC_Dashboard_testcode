@@ -6,15 +6,29 @@ const title = 'h3'
 const searchBar='div > input'
 const searchButton ="button[id='searchIcon']"
 const dropDownProject = 'select[id="clientStatus"]'
+const clientProjetButton = 'div > button'
 
 export class ClientPage {
 
     constructor(public page:Page){}
 
+    public async validateTooltip(clientName:string, descrption:string){
+        await this.page.hover(`//strong[contains(text(),"${clientName}")]/following-sibling::fa-icon`);
+        await this.page.waitForSelector('div[class="tooltip-inner"]');
+        await expect(this.page.locator('div[class="tooltip-inner"]')).toBeVisible();
+        await expect(this.page.locator('div[class="tooltip-inner"]')).toContainText(descrption);        
+    }
+
     public async selectProjectStatusFilter(status:string){
         await this.page.selectOption(dropDownProject, status, {timeout: 10000});
         await this.page.waitForTimeout(3000)
+    }
 
+    public async validateFilterActiveArchive(){
+        const options = ['Active', 'Archive'];
+        for (const option of options) {
+            await expect(this.page.locator(`select option:has-text("${option}")`)).toBeAttached();
+        } 
     }
 
     public async validateSearchElements(){
@@ -45,6 +59,10 @@ export class ClientPage {
         await expect(this.page.locator(title)).toContainText(/Client/i);
     }
 
+    public async validateAddClientProject(clientProject:string){
+        await expect(this.page.locator(clientProjetButton).filter({hasText: clientProject})).toBeVisible()
+    }
+
     public async validateTableHeaders(){
         await expect(this.page.locator(tableHeader)).toContainText(['Project Name', 'Project Manager', 'Engagement Manager', 'Account Executive','Action']);
     }
@@ -65,11 +83,15 @@ export class ClientPage {
 
     public async validateProyectDetails(isVisible:string, project:any){
         await this.validateTableHeaders();
+        
         if (isVisible=='Visible') {
             await expect(this.page.locator(projectNameCell).filter({hasText: project.Name}).locator("..")).toContainText(project.Name);
             await expect(this.page.locator(projectNameCell).filter({hasText: project.Name}).locator("..")).toContainText(project.ProjectManager);
             await expect(this.page.locator(projectNameCell).filter({hasText: project.Name}).locator("..")).toContainText(project.EngagementManager);
             await expect(this.page.locator(projectNameCell).filter({hasText: project.Name}).locator("..")).toContainText(project.AccountExecutive);
+            await expect(this.page.locator(projectNameCell).filter({hasText: project.Name}).locator("..").locator(`td>fa-icon[title='${project.Action[0]}']`)).toBeVisible();
+            await expect(this.page.locator(projectNameCell).filter({hasText: project.Name}).locator("..").locator(`td>fa-icon[title='${project.Action[1]}']`)).toBeVisible();
+
         } else {
             await expect(this.page.locator(projectNameCell).filter({hasText: project})).toBeVisible();
         }

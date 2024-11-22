@@ -1,5 +1,5 @@
 import { ClientPage, CommonElements, HeaderPage, test} from "../../fixture/loadModules";
-import * as data from "../../fixture/clientTestData.json"
+import * as data from "../../fixture/clientTestDataAsMananger.json"
 
 let mypage
 test.beforeEach(async ({baseURL}) => {
@@ -15,13 +15,18 @@ test.describe('Basic elements for Manager user in Client view', async () =>{
         await headerPage.validateTabExist('Exist', 'Clients')
         await headerPage.validateTabExist('Exist', 'Projects')
         await clientPage.validateTitle();
-        // pending validate buttons for Add Cient and Add Project
+        await clientPage.validateAddClientProject('Add Client');
+        await clientPage.validateAddClientProject('Add Project');
         await clientPage.validateSearchElements();
-        //  pending validate dropdown
+        await clientPage.validateFilterActiveArchive();
         await clientPage.validateTableHeaders();
-        await clientPage.validateProyectName("Visible", data.client.projects.project1.Name);
+        await clientPage.validateProyectDetails("Visible", data.client.projects.project1);
+        await clientPage.validateProyectDetails("Visible", data.client.projects.project2);
+        await clientPage.validateProyectDetails("Visible", data.client.projects.project3);
+        await clientPage.validateTooltip(data.client.TestAutomationClientName, data.client.clientSummary);
         await clientPage.clickOnExpandCollapseClient(data.client.TestAutomationClientName);
         await clientPage.validateProyectName("not Visble", data.client.projects.project1.Name);
+        
     });
 
     test('Validate SearchBar', async () => {

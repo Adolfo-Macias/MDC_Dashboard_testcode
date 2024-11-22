@@ -1,5 +1,5 @@
 import { ProjectPage, CommonElements, HeaderPage, test, MetricsPage} from "../../../fixture/loadModules";
-import * as data from "../../../fixture/clientTestData.json"
+import * as data from "../../../fixture/clientTestDataAsMananger.json"
 
 let mypage
 test.beforeEach(async ({baseURL}) => {

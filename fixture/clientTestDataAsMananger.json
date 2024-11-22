@@ -1,12 +1,14 @@
 {
     "client": {
         "TestAutomationClientName":"Test Automation Client Name", 
+        "clientSummary": "Test Automation Summary",
         "projects":{
             "project1": {
                 "Name":"Test Automation Project Name 1",
                 "ProjectManager": "Test Automation Project Manager 1",
                 "EngagementManager":"Test Automation Engagement Manager 1",
                 "AccountExecutive":"Test Automation Account Executive 1",
+                "Action":["Edit", "Archive Project"],
                 "ProjectType":"Scrum",
                 "RiskLevel":"Medium",
                 "ProjectStatus":"Red",
@@ -18,7 +20,7 @@
                 "ProjectManager": "Test Automation Project Manager 2",
                 "EngagementManager":"Test Automation Engagement Manager 2",
                 "AccountExecutive":"Test Automation Account Executive 2",
-                "Action":["Edit", "Archive"],
+                "Action":["Edit", "Archive Project"],
                 "ProjectType":"Scrum",
                 "RiskLevel":"Low",
                 "ProjectStatus":"Red",
@@ -30,7 +32,7 @@
                 "ProjectManager": "Test Automation Project Manager 3",
                 "EngagementManager":"Test Automation Engagement Manager 3",
                 "AccountExecutive":"Test Automation Account Executive 3",
-                "Action":["Edit", "Archive"],
+                "Action":["Edit", "Archive Project"],
                 "ProjectType":"Scrum",
                 "RiskLevel":"Low",
                 "ProjectStatus":"Green",
@@ -42,7 +44,7 @@
                 "ProjectManager": "Ricardo Villanueva",
                 "EngagementManager":"Jennifer Clarke-Burke",
                 "AccountExecutive":"Chelsea Potter",
-                "Action":["Edit", "Unarchive"]
+                "Action":["Edit", "Unarchive Project"]
             }
         }
     }
