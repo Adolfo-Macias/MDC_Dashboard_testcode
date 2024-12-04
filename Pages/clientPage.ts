@@ -2,6 +2,7 @@ import { expect, Page } from "@playwright/test";
 const tableHeader = 'thead > tr > th'
 const clientNameRow = 'tr > td > strong'
 const projectNameCell = 'tr > td.cdk-column-name'
+const clientNameCell = 'tbody > tr[class="mat-mdc-row mdc-data-table__row cdk-row ng-star-inserted"]'
 const title = 'h3'
 const searchBar='div > input'
 const searchButton ="button[id='searchIcon']"
@@ -78,6 +79,14 @@ export class ClientPage {
             await expect(this.page.locator(projectNameCell).filter({hasText: projectName})).not.toBeVisible();
         } else {
             await expect(this.page.locator(projectNameCell).filter({hasText: projectName})).toBeVisible();
+        }
+    }
+
+    public async validateClientName(isVisible:string, projectName:string){
+        if (isVisible=='not exist') {
+            await expect(this.page.locator(clientNameCell).filter({hasText: projectName})).not.toBeAttached();
+        } else {
+            await expect(this.page.locator(clientNameCell).filter({hasText: projectName})).toBeVisible();
         }
     }
 

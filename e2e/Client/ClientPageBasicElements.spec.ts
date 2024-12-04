@@ -20,6 +20,8 @@ test.describe('Basic elements for Manager user in Client view', async () =>{
         await clientPage.validateSearchElements();
         await clientPage.validateFilterActiveArchive();
         await clientPage.validateTableHeaders();
+        await clientPage.validateClientName("Visible", data.client.TestAutomationClientName)
+        // await clientPage.validateClientName("not exist",  data.client.TestAutomationClientName)
         await clientPage.validateProyectDetails("Visible", data.client.projects.project1);
         await clientPage.validateProyectDetails("Visible", data.client.projects.project2);
         await clientPage.validateProyectDetails("Visible", data.client.projects.project3);
