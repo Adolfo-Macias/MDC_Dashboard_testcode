@@ -15,7 +15,7 @@ test.describe('Basic elements for Manager user in EDIT Client view', async () =>
         await headerPage.validateHeader()
         await clientPage.validateTitle();
         await clientPage.clickOnEditProject(data.client.projects.project1.Name)
-        await editClientPage.validateInputFieldsValues(data.client.projects.project1)
+        await editClientPage.validateInputFieldsValues(data.client.projects.project1) 
     });
 
 
