@@ -106,4 +106,7 @@ export class ClientPage {
         }
     }
 
+    public async clickOnEditProject(projectName:string){
+        await this.page.locator(projectNameCell).filter({hasText: projectName}).locator('..').locator(`td>fa-icon[title='Edit']`).click();
+    }
 }

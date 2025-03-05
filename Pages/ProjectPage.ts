@@ -32,6 +32,7 @@ export class ProjectPage {
         await this.validateTableHeaders();
         if (isVisible=='Visible') {
             await expect(this.page.locator(projectNameCell).filter({hasText: project.Name}).locator("..")).toContainText(project.Name);
+            await expect(this.page.locator(projectNameCell).filter({hasText: project.Name}).locator("..")).toContainText(project.ProjectManager);
             await expect(this.page.locator(projectNameCell).filter({hasText: project.Name}).locator("..")).toContainText(project.ProjectType);
             await expect(this.page.locator(projectNameCell).filter({hasText: project.Name}).locator("..")).toContainText(project.RiskLevel);
             await expect(this.page.locator(projectNameCell).filter({hasText: project.Name}).locator("..")).toContainText(project.ProjectStatus);
