@@ -4,7 +4,6 @@ import { ClientPage } from '../Pages/clientPage.ts'
 import { HeaderPage } from '../Pages/headerPage.ts';
 import { ProjectPage } from '../Pages/ProjectPage.ts'
 import { MetricsPage } from "../Pages/metricsPage.ts";
-import {EditClientPage} from "../Pages/editClientPage.ts"
 
 
 type pages = {
@@ -13,7 +12,6 @@ type pages = {
     headerPage: HeaderPage
     projectPage: ProjectPage
     metricsPage: MetricsPage
-    editclientpage:EditClientPage
 }
 
 const fixtureTestBase = mytest.extend<pages>({
@@ -31,9 +29,6 @@ const fixtureTestBase = mytest.extend<pages>({
     },
     metricsPage:async({page}, use) =>{
         await use(new MetricsPage(page));
-    },
-    editclientpage:async({page}, use) =>{
-        await use(new EditClientPage(page));
     }
 
 })
@@ -44,5 +39,4 @@ export { CommonElements };
 export { ClientPage };
 export { HeaderPage };
 export { ProjectPage };
-export { MetricsPage };
-export { EditClientPage };
+export { MetricsPage }

@@ -1,6 +1,7 @@
 {
   "name": "playwright",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "Client": "npx playwright test e2e/ClientPageBasicElements.spec.ts",
@@ -15,7 +16,6 @@
     "@playwright/test": "^1.43.1",
     "@types/mssql": "^9.1.5",
     "@types/node": "^20.12.7",
-    "@zerostep/playwright": "^0.1.5",
     "cucumber": "^6.0.7",
     "ts-node": "^10.9.2"
   },
@@ -23,9 +23,5 @@
     "git": "^0.1.5",
     "mssql": "^11.0.1",
     "typescript": "^5.4.5"
-  },
-  "directories": {
-    "test": "tests"
-  },
-  "description": ""
+  }
 }
