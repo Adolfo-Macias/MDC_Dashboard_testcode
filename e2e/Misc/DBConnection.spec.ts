@@ -17,7 +17,6 @@ test.afterAll(async () => {
 
 
 test('Validate SearchBar', async () => {
-
   try{
     const Projects = await connection.query(`SELECT * FROM Projects where Id = 16`);
     console.log(Projects);
