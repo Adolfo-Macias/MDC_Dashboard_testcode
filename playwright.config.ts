@@ -26,13 +26,13 @@ export default defineConfig({
     screenshot: 'only-on-failure',
     video: 'on',
     trace: 'on-first-retry',
-    headless: true,
+    headless: false,
   },
   
 
   /* Configure projects for major browsers */
   projects: [
-    { name: 'all-test',testMatch: ['**/*.{spec,fixture}.ts']},
+    { name: 'all-test',testMatch: ['**/*.{spec,fixture,setup}.ts']},
     // {
     //   name: 'chromium',
     //   use: { ...devices['Desktop Chrome'] },
