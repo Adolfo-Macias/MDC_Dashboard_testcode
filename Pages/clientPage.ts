@@ -65,7 +65,7 @@ export class ClientPage {
     }
 
     public async validateTableHeaders(){
-        await expect(this.page.locator(tableHeader)).toContainText(['Project Name', 'Project Manager', 'Engagement Manager', 'Account Executive','Action']);
+        await expect(this.page.locator(tableHeader)).toContainText(['Project Name', 'Point of Contact', 'Engagement Manager', 'Account Executive','Action']);
     }
 
     public async clickOnExpandCollapseClient(clientName:string){
