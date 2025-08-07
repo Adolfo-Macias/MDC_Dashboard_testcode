@@ -53,4 +53,23 @@ test.describe('Basic elements for Manager user in Client view', async () =>{
         await clientPage.selectProjectStatusFilter('Archive')
         await clientPage.validateProyectDetails("Visible", data.client.projects.ArchiveProject)
     });
+
+    test('Validate Unarchive Project', async () => {
+        const headerPage = new HeaderPage(mypage)
+        const clientPage = new ClientPage(mypage)
+        await headerPage.clickOnClientView()
+        await mypage.waitForTimeout(2000)
+        await clientPage.selectProjectStatusFilter('Archive')
+        await clientPage.validateProyectDetails("Visible", data.client.projects.ArchiveUnarchiveProject)
+        await clientPage.clickOnUnarchiveProject(data.client.projects.ArchiveUnarchiveProject.Name);
+        await clientPage.validateProyectDetails("not Visble", data.client.projects.ArchiveUnarchiveProject);
+
+        await clientPage.selectProjectStatusFilter('Active')
+        await clientPage.validateProyectName("Visible", data.client.projects.ArchiveUnarchiveProject.Name);
+        await clientPage.clickOnArchiveProject(data.client.projects.ArchiveUnarchiveProject.Name);
+        await clientPage.validateProyectDetails("not Visble", data.client.projects.ArchiveUnarchiveProject);
+        
+        await clientPage.selectProjectStatusFilter('Archive')
+        await clientPage.validateProyectDetails("Visible", data.client.projects.ArchiveUnarchiveProject);
+    });
 })

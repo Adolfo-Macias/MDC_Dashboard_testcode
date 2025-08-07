@@ -22,6 +22,7 @@ export class ClientPage {
 
     public async selectProjectStatusFilter(status:string){
         await this.page.selectOption(dropDownProject, status, {timeout: 10000});
+        await this.page.waitForLoadState('networkidle');
         await this.page.waitForTimeout(3000)
     }
 
@@ -102,11 +103,24 @@ export class ClientPage {
             await expect(this.page.locator(projectNameCell).filter({hasText: project.Name}).locator("..").locator(`td>fa-icon[title='${project.Action[1]}']`)).toBeVisible();
 
         } else {
-            await expect(this.page.locator(projectNameCell).filter({hasText: project})).toBeVisible();
+            await expect(this.page.locator(projectNameCell).filter({hasText: project})).not.toBeVisible();
         }
     }
 
     public async clickOnEditProject(projectName:string){
         await this.page.locator(projectNameCell).filter({hasText: projectName}).locator('..').locator(`td>fa-icon[title='Edit']`).click();
     }
+
+    public async clickOnUnarchiveProject(projectName: string){
+        await this.page.locator(projectNameCell).filter({hasText: projectName}).locator('..').locator(`td>fa-icon[title='Unarchive Project']`).click();
+        await this.page.waitForLoadState('networkidle');
+    }
+
+
+    public async clickOnArchiveProject(projectName: string) {
+        await this.page.locator(projectNameCell).filter({hasText: projectName}).locator('..').locator(`td>fa-icon[title='Archive Project']`).click();
+        await this.page.waitForLoadState('networkidle');
+        await this.page.waitForTimeout(3000)
+    }
+
 }

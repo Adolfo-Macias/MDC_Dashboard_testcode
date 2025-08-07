@@ -13,7 +13,11 @@
                 "RiskLevel":"Medium",
                 "ProjectStatus":"Red",
                 "LastIteration":"27-Jul-24",
-                "Metrics": true
+                "Metrics": true,
+                "Description": "Test Automation Description 1",
+                "TeamSize": "1",
+                "EndDate": "2024-05-01",
+                "TechStack": "Test Automation Tech Stack 1"  
             },
             "project2": {
                 "Name":"Test Automation Project Name 2",
@@ -44,6 +48,13 @@
                 "ProjectManager": "Ricardo Villanueva",
                 "EngagementManager":"Jennifer Clarke-Burke",
                 "AccountExecutive":"Chelsea Potter",
+                "Action":["Edit", "Unarchive Project"]
+            },
+            "ArchiveUnarchiveProject": {
+                "Name":"Test Project",
+                "ProjectManager": "Jacobo Urquides",
+                "EngagementManager":"Erin Dickey",
+                "AccountExecutive":"Tyler Adelsen",
                 "Action":["Edit", "Unarchive Project"]
             }
         }
